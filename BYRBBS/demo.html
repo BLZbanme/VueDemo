@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <script src='../vue.js'></script>
+        <style>
+            .page {
+                width: 80%;
+                margin: 0 auto;
+                height: 100%;
+            }
+
+            .header-p {
+                height: 40px;
+                margin: 0;
+                display: inline-flex;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                align-items: center;
+                width: 100%;
+            }
+
+            .header-img {
+                flex-shrink: 0;
+            }
+
+            .header-a {
+                margin-left: 2%;
+                flex-shrink: 0;
+            }
+
+            .header-left {
+                display: inline-block;
+                width: 400px;
+            }
+
+            .header-input {
+                width: 80%;
+                background-color:whitesmoke;
+                margin-left: 8%;
+                border: none;
+                height: 25px;
+                padding-left: 3% ;
+            }
+        </style>
+    </head>
+    <body>
+        <div class='page'>
+            <div class='header'>
+                <div id='app-1' class='header-left'>
+                    <icon-title></icon-title>
+                </div>
+                <!-- <div class='header-mid'>
+                    <input v-model='searchText' id='searchInput' type='text'>
+                </div> -->
+            </div>
+        </div>
+        <script>
+            var iconComponent = {
+                data: function(){
+                    return {
+                        searchText: '',
+                    }
+                },
+                template: `<p class='header-p'>
+                <img class='header-img' src='icon.png'>
+                <a class='header-a'>BYRBBS</a>
+                <input v-model='searchText' placeholder='搜索' class='header-input' type='text'>
+                </p>
+                `
+            }
+
+            var iconAndTittle  = new Vue({
+                el: '#app-1',
+                data: {
+                    searchText: ''
+                },
+                components: {
+                    'icon-title': iconComponent
+                }
+            });
+        </script>
+    </body>
+</html>
