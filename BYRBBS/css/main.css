@@ -1,0 +1,19 @@
+.page {
+    display:  flex;
+    flex-direction: column;
+}
+
+#mainBar {
+    margin-top: 0;
+    border-top: 1px solid gainsboro; 
+}
+
+.show {
+    display: flex;
+    flex-direction: column;
+}
+
+.hidden {
+    display: none;
+}
+

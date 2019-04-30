@@ -1,0 +1,29 @@
+#navigate {
+    height: 68px;
+    width: 40%;
+    display: inline-flex;
+}
+
+.nav-ol {
+    list-style-type: none;
+    display: inline-flex;
+    justify-content: space-between;
+    padding-left: 10%;
+    align-items: center;
+}
+
+.nav-ol li a {
+    display: inline-block;
+    width: 70px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    color:grey;
+    font-size: 1.1rem;
+    cursor:pointer;
+}
+
+.nav-ol li a.choose {
+    border-bottom: 4px solid gray;
+    padding-top: 4px;
+}

@@ -2,115 +2,12 @@
 <html>
     <head>
         <meta charset='utf-8'>
-        <script src='../vue.js'></script>
-        <style>
-            .page {
-                width: 80%;
-                margin: 0 auto;
-                height: 100%;
-            }
-
-            .header {
-                height: 40px;
-                margin: 0;
-                display: inline-flex;
-                justify-content: space-between;
-                align-items: center;
-                width: 100%;
-            }
-
-            .header-p {
-                height: 40px;
-                margin: 0;
-                display: inline-flex;
-                flex-wrap: nowrap;
-                justify-content: flex-start;
-                align-items: center;
-                width: 100%;
-            }
-
-            .header-p-right {
-                height: 40px;
-                margin: 0;
-                display: inline-flex;
-                flex-wrap: nowrap;
-                justify-content: space-between;
-                align-items: center;
-                width: 100%;
-            }
-
-            .button-left {
-                height: 40px;
-                width: 150px;
-                margin: 0;
-                display: inline-flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            .button-right {
-                height: 40px;
-                margin: 0;
-                margin-left: 20px;
-                width: 75px;
-                display: inline-flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            .header-img {
-                flex-shrink: 0;
-            }
-
-            .header-a {
-                margin-left: 2%;
-                flex-shrink: 0;
-                color: grey;
-            }
-
-            .header-left {
-                display: inline-block;
-                width: 400px;
-            }
-
-            .header-right {
-                flex-grow: 0;
-                width: 250px;
-                height: 40px;
-                margin: 0;
-                display: inline-flex;
-                flex-wrap: nowrap;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            .header-input {
-                width: 80%;
-                background-color:whitesmoke;
-                margin-left: 8%;
-                border: none;
-                height: 25px;
-                padding-left: 3% ;
-            }
-
-            .circular{
-                width: 30px; 
-                height: 30px;
-                border-radius: 50%;
-                background-color: whitesmoke;
-                font-size: 0.6rem;
-                color: grey;
-                text-align: center;
-                overflow:hidden;
-                line-height:30px;
-            }
-            a#useName {
-                color: grey;
-                margin-left: 5px;
-            }
-        </style>
+        <link rel='stylesheet' href='./css/header.css'/>
+        <link rel='stylesheet' href='./css/navigate.css'/>
+        <link rel='stylesheet' href='./css/main.css'/>
     </head>
     <body>
+        <script src='../vue.js'></script>
         <div class='page'>
             <div id='header' class='header'>
                 <div class='header-left'>
@@ -129,19 +26,89 @@
                     </p>
                     <p class='button-right'>
                         <img class='circular' src='icon.png'>
-                        <a id='useName'>****</a>
+                        <a id='useName'>{{ useName }}</a>
                     </p>
+                </div>
+            </div>
+            <div id='navigate' >
+                <ol class='nav-ol'>
+                    <li><a class='choose'>订阅</a></li>
+                    <li><a>评论</a></li>
+                    <li><a>赞</a></li>
+                    <li><a>私信</a></li>
+                </ol>
+            </div>
+            <div id='mainBar'>
+                <div id='subscription' class='show'>
+                </div>
+                <div id='comment' class='hidden'>
+                </div>
+                <div id='like' class='hidden'>
+                </div>
+                <div id='message' class='hidden'>
                 </div>
             </div>
         </div>
         <script>
-            
-            var iconAndTittle  = new Vue({
+            var pageHeader  = new Vue({
                 el: '#header',
                 data: {
-                    searchText: ''
+                    searchText: '',
+                    useName: 'admin'
                 }
             });
+
+            var ol = document.querySelector('.nav-ol');
+            ol.addEventListener('click', navClick);
+
+            function displayWhere(){
+                /写下面面板的展示逻辑/ 
+            }
+
+            function navClick(e){
+                if(e.target.tagName == 'A'){
+                    var listA = document.querySelectorAll('.nav-ol li a');
+                    for(let i in listA){
+                        if(listA[i] == e.target){
+                            e.target.className = 'choose';
+                        }else{
+                            listA[i].className = '';
+                        }
+                    }
+                    displayWhere();
+                }   
+            }
+
+            subscriptionA = {
+                data: function(){
+                    return {
+                        category: '学习',
+                        plate: '前端之美',
+                        imgSrc: 'icon.ong',
+                        useName: 'admin',
+                        likeNum: 666,
+                        time: '2019-04-30 19:07',
+                        newReport: 183,
+                        tittle: '帖子标题',
+                        abstract: '帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要',
+                    }
+                },
+                template: ``
+            }
+
+            var main = new Vue({
+                el: '#mainBar',
+                data: {
+                    imgSrc: 'icon.png',
+                    usrName: 'admin',
+                },
+                components: {
+                    'subscription-A' :   subscriptionA          
+                }
+            })
+
+            
+           
         </script>
     </body>
 </html>
