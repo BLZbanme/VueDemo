@@ -10,6 +10,15 @@
                 height: 100%;
             }
 
+            .header {
+                height: 40px;
+                margin: 0;
+                display: inline-flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+            }
+
             .header-p {
                 height: 40px;
                 margin: 0;
@@ -20,6 +29,35 @@
                 width: 100%;
             }
 
+            .header-p-right {
+                height: 40px;
+                margin: 0;
+                display: inline-flex;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+            }
+
+            .button-left {
+                height: 40px;
+                width: 150px;
+                margin: 0;
+                display: inline-flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .button-right {
+                height: 40px;
+                margin: 0;
+                margin-left: 20px;
+                width: 70px;
+                display: inline-flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
             .header-img {
                 flex-shrink: 0;
             }
@@ -27,11 +65,23 @@
             .header-a {
                 margin-left: 2%;
                 flex-shrink: 0;
+                color: grey;
             }
 
             .header-left {
                 display: inline-block;
                 width: 400px;
+            }
+
+            .header-right {
+                flex-grow: 0;
+                width: 240px;
+                height: 40px;
+                margin: 0;
+                display: inline-flex;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                align-items: center;
             }
 
             .header-input {
@@ -42,41 +92,53 @@
                 height: 25px;
                 padding-left: 3% ;
             }
+
+            .circular{
+                width: 30px; 
+                height: 30px;
+                border-radius: 50%;
+                background-color: whitesmoke;
+                font-size: 0.6rem;
+                color: grey;
+                text-align: center;
+                overflow:hidden;
+                line-height:30px;
+            }
+            a#useName {
+                color: grey;
+            }
         </style>
     </head>
     <body>
         <div class='page'>
-            <div class='header'>
-                <div id='app-1' class='header-left'>
-                    <icon-title></icon-title>
+            <div id='header' class='header'>
+                <div class='header-left'>
+                    <p class='header-p'>
+                        <img class='header-img' src='icon.png'>
+                        <a class='header-a'>BYRBBS</a>
+                        <input v-model='searchText' placeholder='搜索' class='header-input' type='text'>
+                    </p>
                 </div>
-                <!-- <div class='header-mid'>
-                    <input v-model='searchText' id='searchInput' type='text'>
-                </div> -->
+                <div class='header-right'>
+                    <p class='button-left'>
+                        <a class='circular'>提醒</a>
+                        <a class='circular'>私信</a>
+                        <a class='circular'>历史</a>
+                        <a class='circular'>收藏</a>
+                    </p>
+                    <p class='button-right'>
+                        <img class='circular' src='icon.png'>
+                        <a id='useName'>****</a>
+                    </p>
+                </div>
             </div>
         </div>
         <script>
-            var iconComponent = {
-                data: function(){
-                    return {
-                        searchText: '',
-                    }
-                },
-                template: `<p class='header-p'>
-                <img class='header-img' src='icon.png'>
-                <a class='header-a'>BYRBBS</a>
-                <input v-model='searchText' placeholder='搜索' class='header-input' type='text'>
-                </p>
-                `
-            }
-
+            
             var iconAndTittle  = new Vue({
-                el: '#app-1',
+                el: '#header',
                 data: {
                     searchText: ''
-                },
-                components: {
-                    'icon-title': iconComponent
                 }
             });
         </script>
