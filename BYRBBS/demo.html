@@ -40,6 +40,7 @@
             </div>
             <div id='mainBar'>
                 <div id='subscription' class='show'>
+                    <tittle-abstract></tittle-abstract>
                 </div>
                 <div id='comment' class='hidden'>
                 </div>
@@ -79,31 +80,50 @@
                 }   
             }
 
-            subscriptionA = {
+            var subscriptionA = {
                 data: function(){
                     return {
                         category: '学习',
                         plate: '前端之美',
-                        imgSrc: 'icon.ong',
-                        useName: 'admin',
-                        likeNum: 666,
-                        time: '2019-04-30 19:07',
                         newReport: 183,
                         tittle: '帖子标题',
                         abstract: '帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要',
                     }
                 },
-                template: ``
+                template: `<p class='p-tittle'>
+                            <p class='p-tittle-left'>
+                                <a class='a-plate'></a>
+                                <a class='a-category'></a>
+                            </p>
+                            <p class='p-tittle-right'>
+                                <a class='a-plate'></a>
+                                <a class='a-category'></a>
+                            </p>
+                        </p>`
             }
 
+            var subscriptionB = {
+                data: function(){
+                    return {
+                        imgSrc: 'icon.ong',
+                        useName: 'admin',
+                        likeNum: 666,
+                        time: '2019-04-30 19:07',
+                    }
+                },
+                template: ``
+            }
+            
+
             var main = new Vue({
-                el: '#mainBar',
+                el: '#subscription',
                 data: {
                     imgSrc: 'icon.png',
                     usrName: 'admin',
                 },
                 components: {
-                    'subscription-A' :   subscriptionA          
+                    'tittle-abstract': subscriptionA,
+                    'user-like': subscriptionB        
                 }
             })
 
