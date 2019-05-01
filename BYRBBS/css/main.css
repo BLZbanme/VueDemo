@@ -17,3 +17,149 @@
     display: none;
 }
 
+.div-tittle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.a-remindNum {
+    display: inline-block;
+    color: grey;
+}
+
+.p-tittle-left {
+    display: inline-flex;
+    align-items: center;
+    width: 60%;
+}
+
+.p-tittle-right {
+    width: 100px;
+}
+
+.a-plate, .a-category {
+    display: inline-block;
+    width: 30px;
+    height: 20px;
+    font-size: 3px;
+    line-height: 20px;
+    overflow: hidden;
+    text-align: center;
+    flex-grow: 0;
+    flex-shrink: 0;
+    color: ghostwhite;
+}
+
+.a-plate {
+    background: grey;
+}
+
+.a-category {
+    background: rgb(190, 190, 190);
+}
+
+.a-tittle {
+    font-size: 1.2rem;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    overflow: hidden;
+    width: 90%;
+    margin-left:20px;
+    color: grey;
+}
+
+.div-uselike {
+    width: 30%;
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+}
+
+.div-uselike a, .div-uselike img {
+    white-space: nowrap; 
+    margin-left: 10px; 
+    color: grey;  
+}
+
+.iconOfMain {
+    width: 25px; 
+    height: 25px;
+    border-radius: 50%;
+}
+
+.p-abstract {
+    width:100%;
+    color: grey;
+    text-overflow:ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    margin-top: 0; 
+    margin-bottom: 0; 
+}
+
+.main-one {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px; 
+}
+
+.main-one-left{
+    width: 80%;
+    height:95px;
+}
+
+.main-one-right{
+    width: 150px;
+    height: 95px;
+    background:  grey;
+}
+
+.main-two {
+    border-top: 1px solid gainsboro;
+    padding-top: 10px;
+    padding-bottom: 20px; 
+}
+
+.main-three {
+    border-top: 1px solid gainsboro;
+    border-bottom: 1px solid gainsboro;
+    padding-top: 10px;
+    padding-bottom: 20px; 
+}
+
+.main-three-left {
+    width: 90px;
+    height: 70px;
+    background:  grey;
+}
+
+.main-button-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style-type: none;
+    list-style-image: url('../span.png');
+    list-style-position: inside;
+    padding-left: 0;
+}
+
+.main-button-list li {
+    width: 160px;
+    height: 40px;
+    background: gainsboro;
+    text-align: center;
+    align-items: center;
+    
+}
+
+.main-button-list li a{
+    line-height: 40px;
+    width: 160px;
+    height: 40px;
+    background: gainsboro;
+    text-align: center;
+    color: grey;
+}

@@ -41,6 +41,38 @@
             <div id='mainBar'>
                 <div id='subscription' class='show'>
                     <tittle-abstract></tittle-abstract>
+                    <div class='main-one'>
+                        <div class='main-one-left'>
+                            <user-like></user-like>
+                            <abstract-text></abstract-text>
+                        </div>
+                        <div class='main-one-right'>
+                        </div>
+                    </div>
+                    <div class='main-two'>
+                        <user-like></user-like>
+                        <abstract-text></abstract-text>
+                    </div>
+                    <div class='main-three'>
+                        <user-like></user-like>
+                        <div class='main-three-left'></div>
+                        <div class='main-button'>
+                            <ul class='main-button-list'>
+                                <li><a>取消订阅</a></li>
+                                <li><a>加入收藏夹</a></li>
+                            </ul>                           
+                        </div>
+                    </div>
+                    <tittle-abstract></tittle-abstract>
+                    <div class='main-one'>
+                        <div class='main-one-left'>
+                            <user-like></user-like>
+                            <abstract-text></abstract-text>
+                        </div>
+                        <div class='main-one-right'>
+                        </div>
+                    </div>
+                    
                 </div>
                 <div id='comment' class='hidden'>
                 </div>
@@ -62,8 +94,23 @@
             var ol = document.querySelector('.nav-ol');
             ol.addEventListener('click', navClick);
 
-            function displayWhere(){
-                /写下面面板的展示逻辑/ 
+            function displayWhere(e){
+                var listA = document.querySelectorAll('.nav-ol li a');
+                let i = 0;
+                for(i = 0; i < listA.length; i++){
+                    if(listA[i] == e.target){
+                        break;
+                    }
+                }
+                var listDiv = document.querySelectorAll('#mainBar > div');
+                for(let j in listDiv){
+                    if(i == j){
+                        listDiv[j].className = 'show';
+                    }else{
+                        listDiv[j].className = 'hidden';
+                    }
+
+                }
             }
 
             function navClick(e){
@@ -76,7 +123,7 @@
                             listA[i].className = '';
                         }
                     }
-                    displayWhere();
+                    displayWhere(e);
                 }   
             }
 
@@ -84,34 +131,52 @@
                 data: function(){
                     return {
                         category: '学习',
-                        plate: '前端之美',
+                        plate: '前端',
                         newReport: 183,
-                        tittle: '帖子标题',
-                        abstract: '帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要',
+                        tittle: '帖子标题帖子标题帖子标题帖子标题帖子标题帖子标题帖子标题帖子标题帖子标题帖子标题帖子标题帖子标题帖子标题',
                     }
                 },
-                template: `<p class='p-tittle'>
+                template: `<div class='div-tittle'>
                             <p class='p-tittle-left'>
-                                <a class='a-plate'></a>
-                                <a class='a-category'></a>
+                                <a class='a-plate'>{{ plate }}</a>
+                                <a class='a-category'>{{ category }}</a>
+                                <a class='a-tittle'>{{ tittle }}</a>
                             </p>
                             <p class='p-tittle-right'>
-                                <a class='a-plate'></a>
-                                <a class='a-category'></a>
+                                <a class='a-remindNum'>{{ newReport }}条新动态</a>
                             </p>
-                        </p>`
+                        </div>`
             }
 
             var subscriptionB = {
                 data: function(){
                     return {
-                        imgSrc: 'icon.ong',
+                        imgSrc: 'icon.png',
                         useName: 'admin',
                         likeNum: 666,
-                        time: '2019-04-30 19:07',
+                        time: '2019-04-30 19:07'
                     }
                 },
-                template: ``
+                template: `<div>
+                            <p class='div-uselike'>
+                                <img :src="imgSrc" class='iconOfMain'/>
+                                <a class='useName'>{{ useName }}</a>
+                                <a>今天 19:07 回复了该贴</a>
+                                <img src='like.png'/>
+                                <a>{{ likeNum }}</a>
+                            </p>                            
+                        </div>`
+            }
+
+            var subscriptionC = {
+                data: function(){
+                    return {
+                        abstract: '帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要帖子摘要',
+                    }
+                },
+                template: `<div class='div-abstract'>
+                            <p class='p-abstract'>{{ abstract }}</p>                        
+                        </div>`
             }
             
 
@@ -123,7 +188,8 @@
                 },
                 components: {
                     'tittle-abstract': subscriptionA,
-                    'user-like': subscriptionB        
+                    'user-like': subscriptionB,
+                    'abstract-text': subscriptionC        
                 }
             })
 
