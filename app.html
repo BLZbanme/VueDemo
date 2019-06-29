@@ -3,12 +3,31 @@
         <meta charset="utf-8"/>
         <title>Vue 示例</title>
     </head>
+    <style>
+        [v-cloak] {
+            display: none
+        }
+    </style>
     <body>
         <div id='app'>
             <div :class="classes">111</div>
         </div>
         <div id='app1'>
             <div :style="styles">111</div>
+        </div>
+        <div id="app2" v-once>
+            {{ message }}
+        </div>
+        <div id="app3" v-cloak>
+            <template >
+                <label v-show="type === 'name'">用户名：</label>
+                <input v-show="type === 'name'" type="text" placeholder="请输入用户名" key="name-input">
+            </template>
+            <template>
+                <label  v-show="type != 'name'">邮箱</label>
+                <input  v-show="type != 'name'" type="email" placeholder="输入邮箱" key="email-input">
+            </template>
+            <button @click="handleToggleClick">切换</button>
         </div>
         <script src="./vue.js"></script>
         <script>
@@ -33,6 +52,19 @@
                     styles: {
                         fontSize: 14 + 'px',
                         color: "red"
+                    }
+                }
+            })
+
+            var app3 = new Vue({
+                el: "#app3",
+                data: {
+                    message: 100,
+                    type: "name"
+                },
+                methods: {
+                    handleToggleClick(){
+                        this.type = this.type == "name" ? "email" : "name";
                     }
                 }
             })
