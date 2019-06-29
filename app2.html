@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="app">  
+            
+            <input type="text" v-model="parentMessage">
+            <my-component :width="100" :message="parentMessage"></my-component>
+            <my-component :message="parentMessage"></my-component>
+            <my-component message="parentMessage"></my-component>
+            <my-component></my-component>
+            <my-component></my-component>
+
+        </div>
+        <script src="vue.js"></script>
+        <script>
+            var data = {
+                counter: 0,
+                style: this.width + 'px'
+            };
+
+            Vue.component("myComponent", {
+                props: {
+                    "message": String,
+                    "width": {
+                        type: Number,
+                        default: 1000
+                    }
+                },
+                // template: "<button @click='counter++'>{{ message }}</button>",
+                template: "<div :style='style'>{{ message }}</div>",
+                data(){
+                    return {
+                        counter: 0,
+                        style: {
+                            width: this.width + 'px'
+                        }
+                    };
+                }
+                // ,
+                // computed: {
+                //     style(){
+                //         return{
+                //             width: this.width + 'px'
+                //         }
+                //     }
+                // }
+            })
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    parentMessage: [1, 2, 3]
+                },
+                methods: {
+                    
+                }
+            })
+        </script>
+    </body>
+</html>
