@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="app">  
+            {{ message }}
+            <button @click="click"></button>
+            <component-a ref="comA"></component-a>
+        </div>
+        <script src="../vue.js"></script>
+        <script>
+            Vue.component("componentA", {
+                template: `<button @click="handleEvent">传递事件</button>`,
+                data(){
+                    return {
+                        message: "123"
+                    }
+                },
+                methods: {
+                    handleEvent() {
+                        this.$parent.message = "儿子给的";
+                    }
+                }
+            })
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    message: ""
+                },
+                methods: {
+                    click(){
+                        var msg = this.$refs.comA.message;
+                        console.log(msg);
+                    }
+                }
+            })
+        </script>
+    </body>
+</html>
