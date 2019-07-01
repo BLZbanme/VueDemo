@@ -29,8 +29,7 @@
                 },
                 methods: {
                     handleClick() {
-                        this.counter++;
-                        this.$emit("input", this.counter);
+                        this.$emit("input", ++this.counter);
                     }
                 }
             })
