@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link href="./style.css" rel="stylesheet"></link>
+    </head>
+    <body>
+        <div id="app" v-cloak>
+            <tabs v-model="activeKey">
+                <pane name="1" label="A">
+                    这是paneA的内容
+                </pane>
+                <pane name="2" label="B">
+                    这是paneB的内容
+                </pane>
+                <pane name="3" label="C">
+                    这是paneC的内容
+                </pane>
+            </tabs>
+        </div>
+        <script src="../vue.js"></script>
+        <script src="pane.js"></script>
+        <script src="tabs.js"></script> 
+        <script>
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    activeKey: '1'
+                }
+            })
+        </script>
+    </body>
+</html>
