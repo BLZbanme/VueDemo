@@ -1,0 +1,85 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div id="app">
+            <div v-time="timeNow"></div>
+            <div v-time="timeBefore"></div>
+        </div>
+        <script src="../vue.js"></script>
+        <script>
+            var Time = {
+                getUnix() {
+                    var date = new Date();
+                    return date.getTime();
+                },
+                getTodayUnix() {
+                    var date = new Date();
+                    date.setHours(0);
+                    date.setMinutes(0);
+                    date.setSeconds(0);
+                    date.setMilliseconds(0);
+                    return date.getTime();
+                },
+                getYearUnix() {
+                    var date = new Date();
+                    date.setMonth(0);
+                    date.setDate(1);
+                    date.setHours(0);
+                    date.setMinutes(0);
+                    date.setSeconds(0);
+                    date.setMilliseconds(0);
+                    return date.getTime();
+                },
+                getLastDate(time) {
+                    var date = new Date(time);
+                    var month = date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : (date.getMonth() + 1);
+                    var day = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+                    return date.getFullYear() + '-' + month + "-" + day;
+                },
+                getFormatTime(time) {
+                    var now = this.getUnix();
+                    var today = this.getTodayUnix();
+                    var year = this.getYearUnix();
+                    var timer = (now - time) / 1000;
+                    var tip = "";
+                    if(timer <= 0){
+                        tip = "刚刚";
+                    }else if(Math.floor(timer / 60) <= 0){
+                        tip = "刚刚"
+                    }else if(timer < 3600){
+                        tip = parseInt(timer / 60) + "分钟前";
+                    }else if(timer >= 3600 && (time - today) >= 0){
+                        tip = parseInt(timer / 3600) + "小时前";
+                    }else if(timer / 86400 <= 31){
+                        tip = parseInt(timer / 86400) + "天前";
+                    }else{
+                        tip = this.getLastDate(time);
+                    }
+                    return tip;
+                }
+            }
+
+            Vue.directive("time", {
+                bind(el, binding){
+                    el.innerHTML = Time.getFormatTime(binding.value);
+                    el.__timeout__ = setInterval(function() {
+                        el.innerHTML = Time.getFormatTime(binding.value);
+                    }, 60000);
+                },
+                unbind() {
+                    clearInterval(el.__timeout__);
+                    delete el.__timeout__;
+                }
+            });
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    timeNow: (new Date()).getTime() - 60 * 60 * 1000 * 2,
+                    timeBefore: 1488930695721
+                }
+            });       
+        </script>
+    </body>
+</html>
