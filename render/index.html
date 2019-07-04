@@ -6,7 +6,7 @@
         <div id="app">
             <anchor
             :level="2"
-            title="特性"></anchor>
+            title="特性">特性</anchor>
         </div>
         <script src="../vue.js"></script>
         <script>
@@ -14,8 +14,31 @@
                 props: {
                     level: {
                         type: Number
+                    },
+                    title: {
+                        type: String,
+                        default: ""
                     }
+                },
+                render(creatElement) {
+                    return creatElement(
+                        "h" + this.level,
+                        [
+                            creatElement(
+                                "a",
+                                {
+                                    domProps: {
+                                        href: "#" + this.title
+                                    }
+                                },
+                                this.$slots.default
+                            )
+                        ]
+                    )
                 }
+            })
+            var app = new Vue({
+                el: "#app"
             })
         </script>
     </body>
